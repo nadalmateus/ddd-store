@@ -105,7 +105,7 @@ namespace Store.Catalog.Domain
         public void Validate()
         {
             Validations.ValidateIfEmpty(Name, "The category name cannot be empty");
-            Validations.ValidateIfLessThan(Code, 0, "The category code cannot be less than 1");
+            Validations.ValidateIfEqual(Code, 0, "The category code cannot be less than 0");
         }
 
         #endregion Methods
