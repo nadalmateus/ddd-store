@@ -6,7 +6,7 @@ namespace Store.Core.DomainObjects
     {
         public static void ValidateIfEqual(object object1, object object2, string message)
         {
-            if (object1.Equals(object2))
+            if (!object1.Equals(object2))
             {
                 throw new DomainException(message);
             }
@@ -14,7 +14,7 @@ namespace Store.Core.DomainObjects
 
         public static void ValidateIfDifferent(object object1, object object2, string message)
         {
-            if (!object1.Equals(object2))
+            if (object1.Equals(object2))
             {
                 throw new DomainException(message);
             }
