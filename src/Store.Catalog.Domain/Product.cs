@@ -67,7 +67,13 @@ namespace Store.Catalog.Domain
         }
 
         public void Validate()
-        { }
+        {
+            Validations.ValidateIfEmpty(Name, "The product name cannot be empty");
+            Validations.ValidateIfEmpty(Description, "The product description cannot be empty");
+            Validations.ValidateIfDifferent(CategoryId, Guid.Empty, "The product category code cannot be empty");
+            Validations.ValidateIfLessThan(Price, 0, "The product price cannot be less than 1");
+            Validations.ValidateIfEmpty(Image, "The product image cannot be empty");
+        }
 
         #endregion Methods
     }
