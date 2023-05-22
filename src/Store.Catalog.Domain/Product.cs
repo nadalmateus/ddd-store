@@ -13,6 +13,7 @@ namespace Store.Catalog.Domain
             decimal price,
             DateTime registrationDate,
             string image,
+            Dimensions dimensions,
             Guid categoryId)
         {
             Name = name;
@@ -21,6 +22,7 @@ namespace Store.Catalog.Domain
             Price = price;
             RegistrationDate = registrationDate;
             Image = image;
+            Dimensions = dimensions;
             CategoryId = categoryId;
             Validate();
         }
@@ -36,6 +38,7 @@ namespace Store.Catalog.Domain
         public DateTime RegistrationDate { get; private set; }
         public string Image { get; private set; }
         public int? StockQuantity { get; private set; }
+        public Dimensions Dimensions { get; private set; }
 
         public Guid CategoryId { get; private set; }
         public Category? Category { get; private set; }
