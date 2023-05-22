@@ -13,6 +13,7 @@ namespace Store.Catalog.Domain
             decimal price,
             DateTime registrationDate,
             string image,
+            Dimensions dimensions,
             Guid categoryId)
         {
             Name = name;
@@ -21,6 +22,7 @@ namespace Store.Catalog.Domain
             Price = price;
             RegistrationDate = registrationDate;
             Image = image;
+            Dimensions = dimensions;
             CategoryId = categoryId;
             Validate();
         }
@@ -36,6 +38,7 @@ namespace Store.Catalog.Domain
         public DateTime RegistrationDate { get; private set; }
         public string Image { get; private set; }
         public int? StockQuantity { get; private set; }
+        public Dimensions Dimensions { get; private set; }
 
         public Guid CategoryId { get; private set; }
         public Category? Category { get; private set; }
@@ -67,7 +70,13 @@ namespace Store.Catalog.Domain
         }
 
         public void Validate()
-        { }
+        {
+            Validations.ValidateIfEmpty(Name, "The product name cannot be empty");
+            Validations.ValidateIfEmpty(Description, "The product description cannot be empty");
+            Validations.ValidateIfDifferent(CategoryId, Guid.Empty, "The product category code cannot be empty");
+            Validations.ValidateIfLessThan(Price, 0, "The product price cannot be less than 1");
+            Validations.ValidateIfEmpty(Image, "The product image cannot be empty");
+        }
 
         #endregion Methods
     }
@@ -80,6 +89,7 @@ namespace Store.Catalog.Domain
         {
             Name = name;
             Code = code;
+            Validate();
         }
 
         #endregion Constructor
@@ -96,7 +106,10 @@ namespace Store.Catalog.Domain
         public override string ToString() => $"{Name} - {Code}";
 
         public void Validate()
-        { }
+        {
+            Validations.ValidateIfEmpty(Name, "The category name cannot be empty");
+            Validations.ValidateIfEqual(Code, 0, "The category code cannot be less than 0");
+        }
 
         #endregion Methods
     }
