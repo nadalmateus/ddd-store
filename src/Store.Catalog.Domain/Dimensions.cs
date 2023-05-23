@@ -10,9 +10,9 @@ namespace Store.Catalog.Domain
             Width = width;
             Depth = depth;
 
-            Validations.ValidateIfLessThan(Height, 1, "The field Height cannot be less than 1");
-            Validations.ValidateIfLessThan(Width, 1, "The field Width cannot be less than 1");
-            Validations.ValidateIfLessThan(Depth, 1, "The field Depth cannot be less than 1");
+            Validations.ValidateIfLessThan(height, 1, "The Height field cannot be less than or equal to 0");
+            Validations.ValidateIfLessThan(width, 1, "The Width field cannot be less than or equal to 0");
+            Validations.ValidateIfLessThan(depth, 1, "The Depth field cannot be less than or equal to 0");
         }
 
         public decimal Height { get; private set; }
