@@ -11,10 +11,11 @@ namespace Store.Catalog.Domain
             string description,
             bool active,
             decimal price,
+            Guid categoryId,
             DateTime registrationDate,
             string image,
-            Dimensions dimensions,
-            Guid categoryId)
+            Dimensions dimensions
+            )
         {
             Name = name;
             Description = description;
@@ -26,6 +27,12 @@ namespace Store.Catalog.Domain
             CategoryId = categoryId;
             Validate();
         }
+
+
+
+        //string.Empty, "Descricao", false, 100, Guid.NewGuid(), DateTime.Now, "Imagem", new Dimensoes(1, 1, 1)
+
+
 
         #endregion Constructor
 
@@ -71,11 +78,11 @@ namespace Store.Catalog.Domain
 
         public void Validate()
         {
-            Validations.ValidateIfEmpty(Name, "The product name cannot be empty");
-            Validations.ValidateIfEmpty(Description, "The product description cannot be empty");
-            Validations.ValidateIfDifferent(CategoryId, Guid.Empty, "The product category code cannot be empty");
-            Validations.ValidateIfLessThan(Price, 0, "The product price cannot be less than 1");
-            Validations.ValidateIfEmpty(Image, "The product image cannot be empty");
+            Validations.ValidateIfEmpty(Name, "The product name field cannot be empty");
+            Validations.ValidateIfEmpty(Description, "The product description field cannot be empty");
+            Validations.ValidateIfEqual(CategoryId, Guid.Empty, "The product CategoryId field cannot be empty");
+            Validations.ValidateIfLessThan(Price, 1, "Product Value field cannot be less than 0");
+            Validations.ValidateIfEmpty(Image, "The product's Image field cannot be empty");
         }
 
         #endregion Methods
@@ -107,8 +114,8 @@ namespace Store.Catalog.Domain
 
         public void Validate()
         {
-            Validations.ValidateIfEmpty(Name, "The category name cannot be empty");
-            Validations.ValidateIfEqual(Code, 0, "The category code cannot be less than 0");
+            Validations.ValidateIfEmpty(Name, "The Name field of the category cannot be empty");
+            Validations.ValidateIfEqual(Code, 0, "The Code field cannot be 0");
         }
 
         #endregion Methods

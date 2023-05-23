@@ -6,7 +6,7 @@ namespace Store.Core.DomainObjects
     {
         public static void ValidateIfEqual(object object1, object object2, string message)
         {
-            if (!object1.Equals(object2))
+            if (object1.Equals(object2))
             {
                 throw new DomainException(message);
             }
@@ -14,7 +14,7 @@ namespace Store.Core.DomainObjects
 
         public static void ValidateIfDifferent(object object1, object object2, string message)
         {
-            if (object1.Equals(object2))
+            if (!object1.Equals(object2))
             {
                 throw new DomainException(message);
             }
@@ -30,7 +30,7 @@ namespace Store.Core.DomainObjects
             }
         }
 
-        public static void ValidateLength(string value, int max, string message)
+        public static void ValidateSize(string value, int max, string message)
         {
             var length = value.Trim().Length;
             if (length > max)
@@ -39,10 +39,10 @@ namespace Store.Core.DomainObjects
             }
         }
 
-        public static void ValidateLength(string value, int min, int max, string message)
+        public static void ValidateSize(string value, int minimum, int maximum, string message)
         {
             var length = value.Trim().Length;
-            if (length < min || length > max)
+            if (length < minimum || length > maximum)
             {
                 throw new DomainException(message);
             }
@@ -64,91 +64,91 @@ namespace Store.Core.DomainObjects
             }
         }
 
-        public static void ValidateRange(double value, double min, double max, string message)
+        public static void ValidateMinimumMaximum(double value, double minimum, double maximum, string message)
         {
-            if (value < min || value > max)
+            if (value < minimum || value > maximum)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateRange(float value, float min, float max, string message)
+        public static void ValidateMinimumMaximum(float value, float minimum, float maximum, string message)
         {
-            if (value < min || value > max)
+            if (value < minimum || value > maximum)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateRange(int value, int min, int max, string message)
+        public static void ValidateMinimumMaximum(int value, int minimum, int maximum, string message)
         {
-            if (value < min || value > max)
+            if (value < minimum || value > maximum)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateRange(long value, long min, long max, string message)
+        public static void ValidateMinimumMaximum(long value, long minimum, long maximum, string message)
         {
-            if (value < min || value > max)
+            if (value < minimum || value > maximum)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateRange(decimal value, decimal min, decimal max, string message)
+        public static void ValidateMinimumMaximum(decimal value, decimal minimum, decimal maximum, string message)
         {
-            if (value < min || value > max)
+            if (value < minimum || value > maximum)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateIfLessThan(long value, long min, string message)
+        public static void ValidateIfLessThan(long value, long minimum, string message)
         {
-            if (value < min)
+            if (value < minimum)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateIfLessThan(double value, double min, string message)
+        public static void ValidateIfLessThan(double value, double minimum, string message)
         {
-            if (value < min)
+            if (value < minimum)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateIfLessThan(decimal value, decimal min, string message)
+        public static void ValidateIfLessThan(decimal value, decimal minimum, string message)
         {
-            if (value < min)
+            if (value < minimum)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateIfLessThan(int value, int min, string message)
+        public static void ValidateIfLessThan(int value, int minimum, string message)
         {
-            if (value < min)
+            if (value < minimum)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateIfFalse(bool value, string message)
+        public static void ValidateIfFalse(bool boolvalue, string message)
         {
-            if (!value)
+            if (!boolvalue)
             {
                 throw new DomainException(message);
             }
         }
 
-        public static void ValidateIfTrue(bool boolvalue, string mensagem)
+        public static void ValidateIfTrue(bool boolvalue, string message)
         {
             if (boolvalue)
             {
-                throw new DomainException(mensagem);
+                throw new DomainException(message);
             }
         }
     }
