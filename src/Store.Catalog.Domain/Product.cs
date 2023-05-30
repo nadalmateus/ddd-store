@@ -87,37 +87,4 @@ namespace Store.Catalog.Domain
 
         #endregion Methods
     }
-
-    public class Category : Entity, IAggregateRoot
-    {
-        #region Constructor
-
-        public Category(string name, int code)
-        {
-            Name = name;
-            Code = code;
-            Validate();
-        }
-
-        #endregion Constructor
-
-        #region Properties
-
-        public string Name { get; private set; }
-        public int Code { get; private set; }
-
-        #endregion Properties
-
-        #region Methods
-
-        public override string ToString() => $"{Name} - {Code}";
-
-        public void Validate()
-        {
-            Validations.ValidateIfEmpty(Name, "The Name field of the category cannot be empty");
-            Validations.ValidateIfEqual(Code, 0, "The Code field cannot be 0");
-        }
-
-        #endregion Methods
-    }
 }
