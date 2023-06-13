@@ -1,7 +1,6 @@
-﻿namespace Store.Core.Data
+﻿namespace Store.Core.Data;
+
+public interface IUnitOfWork
 {
-    public interface IUnitOfWork
-    {
-        Task<bool> Commit();
-    }
+    Task<bool> Commit();
 }

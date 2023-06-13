@@ -1,23 +1,22 @@
 ﻿using Store.Core.Data;
 
-namespace Store.Catalog.Domain
+namespace Store.Catalog.Domain;
+
+public interface IProductRepository : IRepository<Product>
 {
-    public interface IProductRepository : IRepository<Product>
-    {
-        Task<IEnumerable<Product>> GetAll();
+    Task<IEnumerable<Product>> GetAll();
 
-        Task<Product> GetById(Guid id);
+    Task<Product> GetById(Guid id);
 
-        Task<IEnumerable<Product>> GetByCategory(int code);
+    Task<IEnumerable<Product>> GetByCategory(int code);
 
-        Task<IEnumerable<Category>> GetCategories();
+    Task<IEnumerable<Category>> GetCategories();
 
-        void Add(Product product);
+    void Add(Product product);
 
-        void Update(Product product);
+    void Update(Product product);
 
-        void Add(Category category);
+    void Add(Category category);
 
-        void Update(Category category);
-    }
+    void Update(Category category);
 }
