@@ -19,14 +19,14 @@ public class ProductAppService : IProductAppService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ProductDTO>> GetByCategory(Guid id)
+    public async Task<IEnumerable<ProductDTO>> GetByCategory(int code)
     {
-        return _mapper.Map<IEnumerable<ProductDTO>>(await _productRepository.GetByCategory(id));
+        return _mapper.Map<IEnumerable<ProductDTO>>(await _productRepository.GetByCategory(code));
     }
 
     public async Task<ProductDTO> GetById(Guid id)
     {
-        return _mapper.Map<ProductDTO>(await _productRepository.GetByCategory(id));
+        return _mapper.Map<ProductDTO>(await _productRepository.GetById(id));
     }
 
     public async Task<IEnumerable<ProductDTO>> GetAll()

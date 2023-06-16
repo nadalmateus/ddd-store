@@ -4,7 +4,7 @@ namespace Store.Catalog.Application.Services;
 
 public interface IProductAppService : IDisposable
 {
-    Task<IEnumerable<ProductDTO>> GetByCategory(Guid id);
+    Task<IEnumerable<ProductDTO>> GetByCategory(int id);
 
     Task<ProductDTO> GetById(Guid id);
 
