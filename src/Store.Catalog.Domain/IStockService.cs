@@ -1,8 +1,8 @@
 ﻿namespace Store.Catalog.Domain;
 
-public interface IStockService
+public interface IStockService : IDisposable
 {
-    Task<bool> DebitStock(Guid productId, int quatity);
+    Task<bool> DebitStock(Guid productId, int quantity);
 
-    Task<bool> ReplenishStock(Guid productId, int quatity);
+    Task<bool> ReplenishStock(Guid productId, int quantity);
 }

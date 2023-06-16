@@ -28,9 +28,6 @@ public class Product : Entity, IAggregateRoot
         Validate();
     }
 
-
-    //string.Empty, "Descricao", false, 100, Guid.NewGuid(), DateTime.Now, "Imagem", new Dimensoes(1, 1, 1)
-
     #endregion Constructor
 
     #region Properties
