@@ -6,6 +6,10 @@ public class Product : Entity, IAggregateRoot
 {
     #region Constructor
 
+    protected Product()
+    {
+    }
+
     public Product
     (string name,
         string description,
